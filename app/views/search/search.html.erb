@@ -1,0 +1,21 @@
+<h1>Articles Search</h1>
+ 
+<%= form_for search_path, method: :get do |f| %>
+  <p>
+    <%= f.label "Search for" %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag "Go", name: nil %>
+  </p>
+<% end %>
+<% if params[:q].present? %>
+  <h4><%= link_to "Clean search", root_path %></h4>
+<% end -%>
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <h3>
+        <%= link_to "#{article.title} em #{article._score}ms", article_path(id: article.id, keyword: params[:q] ) %>
+      </h3>
+    </li>
+  <% end %>
+</ul>
