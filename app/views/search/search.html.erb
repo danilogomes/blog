@@ -14,7 +14,7 @@
   <% @articles.each do |article| %>
     <li>
       <h3>
-        <%= link_to "#{article.title} em #{article._score}ms", article_path(id: article.id, keyword: params[:q] ) %>
+        <%= link_to "#{article.title} #{article._score}", article_path(id: article.id, keyword: params[:q] ) %>
       </h3>
     </li>
   <% end %>
